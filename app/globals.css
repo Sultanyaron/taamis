@@ -128,4 +128,23 @@
   :where(button, [role="button"]):not([disabled]) {
     cursor: pointer;
   }
+
+  /* RTL Support */
+  [dir="rtl"] {
+    direction: rtl;
+  }
+
+  [dir="rtl"] [lang="he"] {
+    font-family: var(--font-hebrew), sans-serif;
+  }
+
+  [dir="rtl"] [lang="ar"] {
+    font-family: var(--font-arabic), sans-serif;
+  }
+
+  /* Mobile-first responsive design */
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
 }
