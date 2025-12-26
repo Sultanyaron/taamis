@@ -2,17 +2,23 @@
 
 import * as React from "react";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { SignInIcon } from "@phosphor-icons/react";
 
 export default function LoginPage() {
   const { t } = useTranslation();
+  const router = useRouter();
   const [isSignedIn, setIsSignedIn] = React.useState(false);
 
   const handleSignIn = () => {
     // Placeholder for WorkOS AuthKit integration
     setIsSignedIn(true);
+    // Redirect to home page
+    setTimeout(() => {
+      router.push("/home");
+    }, 1000);
   };
 
   const handleSignOut = () => {

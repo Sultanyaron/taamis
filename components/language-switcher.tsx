@@ -3,8 +3,9 @@
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { TranslateIcon } from "@phosphor-icons/react";
+import { cn } from "@/lib/utils";
 
-export function LanguageSwitcher() {
+export function LanguageSwitcher({ showText = true }: { showText?: boolean }) {
   const { t, i18n } = useTranslation();
 
   const toggleLanguage = () => {
@@ -17,9 +18,9 @@ export function LanguageSwitcher() {
       variant="outline"
       size="default"
       onClick={toggleLanguage}
-      className="gap-2">
+      className={cn("gap-2", !showText && "px-2")}>
       <TranslateIcon className="size-5" />
-      <span>{t("language.switch")}</span>
+      {showText && <span>{t("language.switch")}</span>}
     </Button>
   );
 }

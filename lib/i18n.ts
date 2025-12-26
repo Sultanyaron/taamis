@@ -15,9 +15,15 @@ const resources = {
       "common.loading": "טוען...",
       "common.error": "שגיאה",
       "common.success": "הצלחה",
+      "common.hello": "שלום שם",
 
       // Language
       "language.switch": "עבור לערבית",
+
+      // Navigation
+      "nav.home": "בית",
+      "nav.menu": "תפריט",
+      "nav.works": "עבודות",
     },
   },
   ar: {
@@ -31,9 +37,15 @@ const resources = {
       "common.loading": "جار التحميل...",
       "common.error": "خطأ",
       "common.success": "نجح",
+      "common.hello": "مرحباً هناك",
 
       // Language
       "language.switch": "التبديل إلى العبرية",
+
+      // Navigation
+      "nav.home": "الرئيسية",
+      "nav.menu": "القائمة",
+      "nav.works": "الأعمال",
     },
   },
 };
@@ -56,4 +68,3 @@ i18n
   });
 
 export default i18n;
-

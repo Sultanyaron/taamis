@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Rubik, Cairo } from "next/font/google";
 import "./globals.css";
 import { I18nProvider } from "@/components/i18n-provider";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 
 // Hebrew font
 const rubik = Rubik({
@@ -30,7 +32,16 @@ export default function RootLayout({
   return (
     <html lang="he" dir="rtl" className={`${rubik.variable} ${cairo.variable}`}>
       <body className="antialiased font-[var(--font-hebrew)]">
-        <I18nProvider>{children}</I18nProvider>
+        <I18nProvider>
+          <SidebarProvider>
+            <div className="flex min-h-screen w-full">
+              <AppSidebar />
+              <div className="flex-1 flex flex-col overflow-hidden">
+                {children}
+              </div>
+            </div>
+          </SidebarProvider>
+        </I18nProvider>
       </body>
     </html>
   );
