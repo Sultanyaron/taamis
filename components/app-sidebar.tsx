@@ -21,8 +21,10 @@ import {
   UserIcon,
   GearIcon,
   BriefcaseIcon,
+  SignOutIcon,
 } from "@phosphor-icons/react";
 import Link from "next/link";
+import { signOut } from "@workos-inc/authkit-nextjs";
 
 export function AppSidebar() {
   const { t } = useTranslation();
@@ -99,6 +101,15 @@ export function AppSidebar() {
                 <SidebarMenuButton disabled>
                   <GearIcon className="size-5" />
                   <span>Settings</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  onClick={async () => {
+                    await signOut();
+                  }}>
+                  <SignOutIcon className="size-5" />
+                  <span>{t("auth.signOut")}</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
