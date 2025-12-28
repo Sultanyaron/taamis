@@ -1,6 +1,6 @@
-import { withAuth, signOut } from "@workos-inc/authkit-nextjs";
-import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Button } from "@/components/ui/button";
+import { withAuth, signOut } from '@workos-inc/authkit-nextjs';
+import { SidebarTrigger } from '@/components/ui/sidebar';
+import { Button } from '@/components/ui/button';
 
 export default async function HomePage() {
   // Get authenticated user - will redirect to login if not signed in
@@ -33,9 +33,10 @@ export default async function HomePage() {
 
           <form
             action={async () => {
-              "use server";
+              'use server';
               await signOut();
-            }}>
+            }}
+          >
             <Button type="submit" variant="outline">
               Sign out
             </Button>

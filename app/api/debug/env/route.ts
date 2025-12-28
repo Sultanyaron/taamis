@@ -9,7 +9,6 @@ export async function GET() {
     redirectUri: process.env.WORKOS_REDIRECT_URI,
     // Don't expose actual secrets, just check if they exist
     apiKeyPrefix: process.env.WORKOS_API_KEY?.substring(0, 8),
-    clientIdPrefix: process.env.WORKOS_CLIENT_ID?.substring(0, 10),
+    clientIdPrefix: process.env.WORKOS_CLIENT_ID?.substring(0, 10)
   });
 }
-

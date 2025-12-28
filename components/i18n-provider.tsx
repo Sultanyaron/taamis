@@ -1,28 +1,22 @@
-"use client";
+'use client';
 
-import { useEffect, useState, useCallback } from "react";
-import { I18nextProvider } from "react-i18next";
-import i18n from "@/lib/i18n";
+import { useEffect, useState, useCallback } from 'react';
+import { I18nextProvider } from 'react-i18next';
+import i18n from '@/lib/i18n';
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [isInitialized, setIsInitialized] = useState(() => i18n.isInitialized);
 
   const updateDirection = useCallback((language: string) => {
-    const dir = language === "he" || language === "ar" ? "rtl" : "ltr";
+    const dir = language === 'he' || language === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.dir = dir;
     document.documentElement.lang = language;
 
     // Update font based on language
-    const fontClass =
-      language === "he"
-        ? "font-[var(--font-hebrew)]"
-        : "font-[var(--font-arabic)]";
+    const fontClass = language === 'he' ? 'font-[var(--font-hebrew)]' : 'font-[var(--font-arabic)]';
 
     // Remove old font class and add new one
-    document.body.classList.remove(
-      "font-[var(--font-hebrew)]",
-      "font-[var(--font-arabic)]"
-    );
+    document.body.classList.remove('font-[var(--font-hebrew)]', 'font-[var(--font-arabic)]');
     document.body.classList.add(fontClass);
   }, []);
 
@@ -43,13 +37,13 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
       updateDirection(lng);
     };
 
-    i18n.on("initialized", handleInitialized);
-    i18n.on("languageChanged", handleLanguageChanged);
+    i18n.on('initialized', handleInitialized);
+    i18n.on('languageChanged', handleLanguageChanged);
 
     // Cleanup listeners on unmount
     return () => {
-      i18n.off("initialized", handleInitialized);
-      i18n.off("languageChanged", handleLanguageChanged);
+      i18n.off('initialized', handleInitialized);
+      i18n.off('languageChanged', handleLanguageChanged);
     };
   }, [updateDirection]);
 

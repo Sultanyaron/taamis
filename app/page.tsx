@@ -1,5 +1,5 @@
-import { withAuth } from "@workos-inc/authkit-nextjs";
-import { redirect } from "next/navigation";
+import { withAuth } from '@workos-inc/authkit-nextjs';
+import { redirect } from 'next/navigation';
 
 export default async function RootPage() {
   // Check if user is authenticated without forcing redirect
@@ -7,8 +7,8 @@ export default async function RootPage() {
 
   // Redirect based on authentication status
   if (user) {
-    redirect("/home");
+    redirect('/home');
   } else {
-    redirect("/login");
+    redirect('/login');
   }
 }

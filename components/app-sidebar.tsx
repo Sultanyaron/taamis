@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useTranslation } from "react-i18next";
-import { usePathname } from "next/navigation";
+import { useTranslation } from 'react-i18next';
+import { usePathname } from 'next/navigation';
 import {
   Sidebar,
   SidebarContent,
@@ -13,18 +13,12 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar,
-} from "@/components/ui/sidebar";
-import { LanguageSwitcher } from "@/components/language-switcher";
-import {
-  HouseIcon,
-  UserIcon,
-  GearIcon,
-  BriefcaseIcon,
-  SignOutIcon,
-} from "@phosphor-icons/react";
-import Link from "next/link";
-import { signOut } from "@workos-inc/authkit-nextjs";
+  useSidebar
+} from '@/components/ui/sidebar';
+import { LanguageSwitcher } from '@/components/language-switcher';
+import { HouseIcon, UserIcon, GearIcon, BriefcaseIcon, SignOutIcon } from '@phosphor-icons/react';
+import Link from 'next/link';
+import { signOut } from '@workos-inc/authkit-nextjs';
 
 export function AppSidebar() {
   const { t } = useTranslation();
@@ -39,15 +33,15 @@ export function AppSidebar() {
 
   const menuItems = [
     {
-      title: t("nav.home"),
-      url: "/home",
-      icon: HouseIcon,
+      title: t('nav.home'),
+      url: '/home',
+      icon: HouseIcon
     },
     {
-      title: t("nav.works"),
-      url: "/works",
-      icon: BriefcaseIcon,
-    },
+      title: t('nav.works'),
+      url: '/works',
+      icon: BriefcaseIcon
+    }
   ];
 
   return (
@@ -55,15 +49,13 @@ export function AppSidebar() {
       <SidebarHeader className="border-b border-border h-14 flex items-center px-4">
         <div className="flex items-center gap-2">
           <HouseIcon className="size-6 text-primary" weight="bold" />
-          <span className="text-lg font-bold group-data-[collapsible=icon]:hidden">
-            Taamis
-          </span>
+          <span className="text-lg font-bold group-data-[collapsible=icon]:hidden">Taamis</span>
         </div>
       </SidebarHeader>
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>{t("nav.menu")}</SidebarGroupLabel>
+          <SidebarGroupLabel>{t('nav.menu')}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => {
@@ -72,10 +64,7 @@ export function AppSidebar() {
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild isActive={isActive}>
                       <Link href={item.url} onClick={handleLinkClick}>
-                        <item.icon
-                          className="size-5"
-                          weight={isActive ? "fill" : "regular"}
-                        />
+                        <item.icon className="size-5" weight={isActive ? 'fill' : 'regular'} />
                         <span>{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
@@ -107,9 +96,10 @@ export function AppSidebar() {
                 <SidebarMenuButton
                   onClick={async () => {
                     await signOut();
-                  }}>
+                  }}
+                >
                   <SignOutIcon className="size-5" />
-                  <span>{t("auth.signOut")}</span>
+                  <span>{t('auth.signOut')}</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
@@ -118,7 +108,7 @@ export function AppSidebar() {
       </SidebarContent>
 
       <SidebarFooter className="border-t border-border p-4">
-        <LanguageSwitcher showText={state === "expanded"} />
+        <LanguageSwitcher showText={state === 'expanded'} />
       </SidebarFooter>
     </Sidebar>
   );
